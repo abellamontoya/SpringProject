@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <script type="text/javascript" th:src="@{/js/sports.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <title>Spring consuming rest example</title>
+</head>
+
+    <body>
+        <div class="container-fluid bg-dark text-white d-flex justify-content-center">
+            <h2>MP3-UF6 MoviesDatabase API (from: rapidapi)</h2>
+        </div>
+
+        <table class="table table-responsive-sm">
+            <thead>
+                <tr class="table-primary">
+                    <th>Title</th>
+                    <th>Original Title Text</th>
+                    <th>ID</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody th:each="sp:${movie.getResults()}">
+            <tr>
+                <td th:text="${sp.getTitleText().getText()}"></td>
+                <td th:text="${sp.getOriginalTitleText().getText()}"></td>
+                <td th:text="${sp.getId}"></td>
+                <td th:text="${sp.getReleaseYear().getYear()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    <div id="chart">
+
+    </div>
+    </body>
+
+</html>
